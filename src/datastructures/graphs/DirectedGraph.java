@@ -39,7 +39,7 @@ public class DirectedGraph extends Graph {
       * @param j   Target vertex
       * @return    boolean true if (i,j) is in and false otherwise
      */    
-    public boolean edgeExists(int i, int j) {
+    public boolean hasEdge(int i, int j) {
         CursorList<AdjacentVertex> l = adjacencyList[i]; 
         boolean found = false;
         for (l.begin(); !l.isEnd() && !found; l.next()) {
@@ -67,8 +67,8 @@ public class DirectedGraph extends Graph {
       * @param i   Source vertex
       * @param j   Target vertex
      */       
-    public void insertEdge(int i, int j) {
-        if (!edgeExists(i, j)) { 
+    public void addEdge(int i, int j) {
+        if (!hasEdge(i, j)) {
             adjacencyList[i].insert(new AdjacentVertex(j, 1)); 
             edgeCount++; 
         }
@@ -80,8 +80,8 @@ public class DirectedGraph extends Graph {
       * @param j   Target vertex
       * @param p   Weight of (i, j)
      */  
-    public void insertEdge(int i, int j, double p) {
-        if (!edgeExists(i, j)) { 
+    public void addEdge(int i, int j, double p) {
+        if (!hasEdge(i, j)) {
             adjacencyList[i].insert(new AdjacentVertex(j, p)); 
             edgeCount++; 
         }

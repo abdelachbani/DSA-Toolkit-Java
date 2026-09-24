@@ -35,7 +35,7 @@ public class Edge implements Comparable<Edge> {
       *
       * @return int target vertex
      */
-    public int getTarget() {  
+    public int getDestination() {
         return target;
     }
     

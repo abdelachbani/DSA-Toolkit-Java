@@ -23,8 +23,8 @@ public class UndirectedGraph extends DirectedGraph {
       *  @param i   Source vertex
       *  @param j   Target vertex
      */ 
-    public void insertEdge(int i, int j) {
-        if (!edgeExists(i, j)) { 
+    public void addEdge(int i, int j) {
+        if (!hasEdge(i, j)) {
             adjacencyList[i].insert(new AdjacentVertex(j, 1)); 
             adjacencyList[j].insert(new AdjacentVertex(i, 1));
             edgeCount++; 
@@ -39,8 +39,8 @@ public class UndirectedGraph extends DirectedGraph {
       * @param j   Target vertex
       * @param p   Weight of (i, j)
      */ 
-    public void insertEdge(int i, int j, double p) {
-        if (!edgeExists(i, j)) { 
+    public void addEdge(int i, int j, double p) {
+        if (!hasEdge(i, j)) {
             adjacencyList[i].insert(new AdjacentVertex(j, p)); 
             adjacencyList[j].insert(new AdjacentVertex(i, p));
             edgeCount++; 

@@ -5,7 +5,6 @@ import datastructures.trees.BinaryHeap;
 import datastructures.interfaces.Queue;
 import datastructures.interfaces.PriorityQueue;
 import datastructures.interfaces.CursorList;
-import datastructures.linear.LinkedCursorList;
 import datastructures.linear.CircularArrayQueue;
 import datastructures.interfaces.UnionFind;
 
@@ -53,7 +52,7 @@ public abstract class Graph {
       * @param j    Target vertex
       * @return boolean true if (i,j) is in the graph and false otherwise
      */
-    public abstract boolean edgeExists(int i, int j);
+    public abstract boolean hasEdge(int i, int j);
     
     /** Returns the weight of the edge (i,j) of a graph, 0 if such edge 
       * is not in the graph.
@@ -69,7 +68,7 @@ public abstract class Graph {
       * @param i    Source vertex
       * @param j    Target vertex
      */
-    public abstract void insertEdge(int i, int j);
+    public abstract void addEdge(int i, int j);
     
     /** If it's not present, inserts the edge (i, j) with weight p in a Weighted graph.
       * 
@@ -77,7 +76,7 @@ public abstract class Graph {
       * @param j    Target vertex
       * @param p    Weight of the edge (i, j)
      */
-    public abstract void insertEdge(int i, int j, double p);
+    public abstract void addEdge(int i, int j, double p);
 
     /** Returns a CursorList that contains the adjacents to vertex i.
       * 
@@ -149,7 +148,7 @@ public abstract class Graph {
       *                   the numV vertices of the graph, or null if the graph 
       *                   is not Connected
      */ 
-    public Edge[] bfsSpanningTree() {
+    public Edge[] spanningTreeBFS() {
         Edge[] res = new Edge[numVertices() - 1];
         visited = new int[numVertices()];
         q = new CircularArrayQueue<Integer>();
@@ -202,7 +201,7 @@ public abstract class Graph {
         while (!pq.isEmpty() && edgesCount < numVertices() - 1) {
             Edge a = pq.removeMin();
             int origin = uf.find(a.getSource());
-            int dest = uf.find(a.getTarget());
+            int dest = uf.find(a.getDestination());
             if (origin != dest) {
                 res[edgesCount++] = a;
                 uf.union(origin, dest);
