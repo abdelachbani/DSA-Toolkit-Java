@@ -35,10 +35,9 @@ public class BinarySearchTree<E extends Comparable<E>> {
     protected BSTNode<E> buildBalanced(E[] v, int ini, int fin) {
         if(ini > fin) { return null; }
         int mid = (ini + fin) / 2;
-        BSTNode<E> res = new BSTNode<>(v[mid]);
-        res.left = buildBalanced(v, ini, mid - 1);
-        res.right = buildBalanced(v, mid + 1, fin);
-        return res;
+        BSTNode<E> left = buildBalanced(v, ini, mid - 1);
+        BSTNode<E> right = buildBalanced(v, mid + 1, fin);
+        return new BSTNode<>(v[mid], left, right);
     }
     
     /** Rebuilds the BST, with the same data, so that it becomes balanced        

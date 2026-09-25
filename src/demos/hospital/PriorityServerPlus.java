@@ -4,8 +4,8 @@ public class PriorityServerPlus extends PriorityServer implements ORServerPlus {
     private int size;
 
     public PriorityServerPlus() {
-        size = 0;
         super();
+        size = 0;
     }
 
     public void addToWaitlist(Patient p) {
